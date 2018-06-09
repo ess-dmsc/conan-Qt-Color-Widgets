@@ -134,8 +134,8 @@ def get_pipeline(image_key) {
                 --remote ess-dmsc \
                 ${pkg_name_and_version}@${conan_user}/${conan_pkg_channel}
             \""""
-          } */ // stage
-        }  // if
+          }  // stage
+        }*/  // if
       } finally {
         sh "docker stop ${container_name}"
         sh "docker rm -f ${container_name}"
