@@ -1,5 +1,6 @@
 import os
 from conans import ConanFile, CMake, tools
+from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
@@ -22,6 +23,7 @@ class QtColorWidgetsConan(ConanFile):
         self.run("cd Qt-Color-Widgets && git checkout fbeaae4 && cd ..")
 
     def build(self):
+        files.mkdir(self.build_dir)
         with tools.chdir(self.build_dir):
             cmake = CMake(self)
             cmake.definitions["BUILD_SHARED_LIBS"] = "OFF"
