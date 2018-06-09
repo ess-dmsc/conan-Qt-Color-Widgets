@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake, tools
 
 
-class Qt-Color-WidgetsConan(ConanFile):
+class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
     version = "fbeaae4"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
