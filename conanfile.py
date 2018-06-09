@@ -1,5 +1,5 @@
+import os
 from conans import ConanFile, CMake, tools
-
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
@@ -12,26 +12,30 @@ class QtColorWidgetsConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
+    # The temporary build diirectory
+    build_dir = "./%s/build" % folder_name
+
     def source(self):
         self.run("git clone https://github.com/ess-dmsc/Qt-Color-Widgets.git")
         self.run("cd Qt-Color-Widgets && git checkout fbeaae4 && cd ..")
-        # This small hack might be useful to guarantee proper /MT /MD linkage in MSVC
-        # if the packaged project doesn't have variables to set it properly
-#        tools.replace_in_file("benchmark/CMakeLists.txt", "project (benchmark)", '''project (benchmark)
-#include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-#conan_basic_setup()''')
 
     def build(self):
-        cmake = CMake(self)
-        cmake.configure(source_dir="%s/Qt-Color-Widgets" % self.source_folder)
-        cmake.definitions["BUILD_SHARED_LIBS"] = "OFF"
-        cmake.definitions["BUILD_STATIC_LIBS"] = "ON"
-        cmake.definitions["QTCOLORWIDGETS_DESIGNER_PLUGIN"] = "OFF"
-        cmake.build()
+        with tools.chdir(self.build_dir):
+            cmake = CMake(self)
+            cmake.definitions["BUILD_SHARED_LIBS"] = "OFF"
+            cmake.definitions["BUILD_STATIC_LIBS"] = "ON"
+            cmake.definitions["QTCOLORWIDGETS_DESIGNER_PLUGIN"] = "OFF"
+            cmake.definitions["CMAKE_INSTALL_PREFIX"] = ""
 
-        # Explicit way:
-        # self.run('cmake %s/benchmark %s' % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
+            if tools.os_info.is_macos:
+                cmake.definitions["CMAKE_MACOSX_RPATH"] = "ON"
+                cmake.definitions["CMAKE_PREFIX_PATH"] = "/usr/local/opt/qt"
+                cmake.definitions["CMAKE_SHARED_LINKER_FLAGS"] = "-headerpad_max_install_names"
+
+            # cmake.configure(source_dir="..", build_dir=".")
+            self.run("cmake --debug-output %s %s" % ("..", cmake.command_line))
+            cmake.build(build_dir=".")
+            os.system("make install DESTDIR=./install")
 
     def package(self):
         self.copy("*.h", dst="include", src="Qt-Color-Widgets/include")

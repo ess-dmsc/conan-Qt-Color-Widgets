@@ -1,6 +1,5 @@
-//#include "TestApp.h"
-#include <QtColorWidgets/color_selector.hpp>
 #include <QApplication>
+#include "QtColorWidgets/color_selector.hpp"
 
 int main(int argc, char *argv[])
 {
