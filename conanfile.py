@@ -12,6 +12,8 @@ class QtColorWidgetsConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
+    # The folder name when the *.tar.gz release is extracted
+    folder_name = "Qt-Color-Widgets-%s" % version
     # The temporary build diirectory
     build_dir = "./%s/build" % folder_name
 
