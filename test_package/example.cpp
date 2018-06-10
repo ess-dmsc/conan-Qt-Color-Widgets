@@ -1,9 +1,9 @@
-#include <QApplication>
+//#include <QApplication>
 #include "QtColorWidgets/color_selector.hpp"
 
 int main(int argc, char *argv[])
 {
-  QApplication a(argc, argv);
+//  QApplication a(argc, argv);
 
   color_widgets::ColorSelector cs;
 
