@@ -2,9 +2,9 @@ project = "conan-Qt-Color-Widgets"
 
 conan_remote = "ess-dmsc-local"
 conan_user = "ess-dmsc"
-conan_pkg_channel = "testing"
+conan_pkg_channel = "stable"
 
-remote_upload_node = "centos7"
+remote_upload_node = "ubuntu1804"
 
 images = [
   'ubuntu1804': [
