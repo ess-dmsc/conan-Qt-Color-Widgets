@@ -42,7 +42,7 @@ class QtColorWidgetsConan(ConanFile):
             os.system("make install DESTDIR=./install")
 
     def package(self):
-        self.copy("*.h", dst="include", src="Qt-Color-Widgets/include")
+        self.copy("*", dst="include", src=self.build_dir+"/install/include")
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.dylib", dst="lib", keep_path=False)
