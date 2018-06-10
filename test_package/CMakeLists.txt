@@ -20,7 +20,6 @@ find_package(Qt5 COMPONENTS Widgets PrintSupport REQUIRED)
 add_executable(example example.cpp)
 target_link_libraries(example
     ${CONAN_LIBS}
-    QtColorWidgets
     QtColorWidgets-Qt52
     Qt5::Widgets
     Qt5::PrintSupport)
