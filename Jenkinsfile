@@ -6,7 +6,7 @@ project = "conan-Qt-Color-Widgets"
 
 conan_remote = "ess-dmsc-local"
 conan_user = "ess-dmsc"
-conan_pkg_channel = "testing"
+conan_pkg_channel = "stable"
 
 container_build_nodes = [
   'centos': ContainerBuildNode.getDefaultContainerBuildNode('centos7'),
