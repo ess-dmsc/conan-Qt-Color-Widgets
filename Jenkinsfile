@@ -4,7 +4,6 @@ import ecdcpipeline.ConanPackageBuilder
 
 project = "conan-Qt-Color-Widgets"
 
-conan_remote = "ess-dmsc-local"
 conan_user = "ess-dmsc"
 conan_pkg_channel = "stable"
 
