@@ -1,8 +1,8 @@
-# Qt-Color-Widgets conan package
+# QtColorWidgets conan recipe
 
 [![Build Status](https://jenkins.esss.dk/dm/job/ess-dmsc/job/conan-Qt-Color-Widgets/job/master/badge/icon)](https://jenkins.esss.dk/dm/job/ess-dmsc/job/conan-Qt-Color-Widgets/job/master/)
 
-Conan package recipe for [Qt-Color-Widgets](https://github.com/ess-dmsc/Qt-Color-Widgets).
+Conan package recipe for [QtColorWidgets](https://github.com/ess-dmsc/Qt-Color-Widgets), an improved QColorDialog and several other color-related widgets.
 
 ## Updating
 To update to new version:
