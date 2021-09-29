@@ -4,7 +4,7 @@ from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
-    version = "a95f72e"
+    version = "5e19e67"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Qt-Color-Widgets here>"
@@ -20,7 +20,7 @@ class QtColorWidgetsConan(ConanFile):
 
     def source(self):
         self.run("git clone https://github.com/ess-dmsc/Qt-Color-Widgets.git")
-        self.run("cd Qt-Color-Widgets && git checkout a95f72e && cd ..")
+        self.run("cd Qt-Color-Widgets && git checkout 5e19e67 && cd ..")
 
     def build(self):
         files.mkdir(self.build_dir)
