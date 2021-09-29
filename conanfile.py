@@ -6,8 +6,8 @@ class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
     version = "5e19e67"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Qt-Color-Widgets here>"
+    url = "https://github.com/ess-dmsc/conan-Qt-Color-Widgets"
+    description = "Improved QColorDialog and several other color-related widgets."
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
