@@ -4,7 +4,7 @@ from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
-    version = "e69a9f6"
+    version = "f31b4ee"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
     url = "https://github.com/ess-dmsc/conan-Qt-Color-Widgets"
     description = "Improved QColorDialog and several other color-related widgets."
@@ -15,12 +15,12 @@ class QtColorWidgetsConan(ConanFile):
 
     # The folder name when the *.tar.gz release is extracted
     folder_name = "Qt-Color-Widgets"
-    # The temporary build diirectory
+    # The temporary build directory
     build_dir = "./%s/build" % folder_name
 
     def source(self):
         self.run("git clone https://github.com/ess-dmsc/Qt-Color-Widgets.git")
-        self.run("cd Qt-Color-Widgets && git checkout e69a9f6 && cd ..")
+        self.run("cd Qt-Color-Widgets && git checkout f31b4ee && cd ..")
 
     def build(self):
         files.mkdir(self.build_dir)
