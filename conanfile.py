@@ -4,9 +4,9 @@ from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
-    version = "5e19e67"
+    version = "9f4e052"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
-    url = "https://github.com/ess-dmsc/conan-Qt-Color-Widgets"
+    url = "https://github.com/ess-dmsc/Qt-Color-Widgets"
     description = "Improved QColorDialog and several other color-related widgets."
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
@@ -20,7 +20,7 @@ class QtColorWidgetsConan(ConanFile):
 
     def source(self):
         self.run("git clone https://github.com/ess-dmsc/Qt-Color-Widgets.git")
-        self.run("cd Qt-Color-Widgets && git checkout 5e19e67 && cd ..")
+        self.run("cd Qt-Color-Widgets && git checkout {} && cd ..".format(self.version))
 
     def build(self):
         files.mkdir(self.build_dir)
