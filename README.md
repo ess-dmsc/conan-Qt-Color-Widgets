@@ -6,7 +6,7 @@ Conan package recipe for [QtColorWidgets](https://github.com/ess-dmsc/Qt-Color-W
 
 This repository tracks the recipe for generating the conan package. You should not have to run these steps yourself but instead simply fetch the package from the the conan remote server as described below.
 
-## Using
+## Using the package
 
 See the DMSC [conan-configuration repository](https://github.com/ess-dmsc/conan-configuration) for how to configure your remote.
 
@@ -23,7 +23,7 @@ target_link_libraries(my_target
 )
 ```
 
-## Updating
+## Updating the recipe
 
 If you are a contributor and wish to update this recipe to use the latest version of the target library:
 
@@ -32,6 +32,6 @@ If you are a contributor and wish to update this recipe to use the latest versio
 * change the commit hash to point to new version:
   * in [conanfile.py](conanfile.py) at `version=`
   * in this README, under the ["Using"](#using) section above
-* push and massage until the job succeeds on [Jenkins](https://jenkins.esss.dk/dm/job/ess-dmsc/job/conan-qplot/)
+* push and massage until the job succeeds on [Jenkins](https://jenkins.esss.dk/dm/job/ess-dmsc/job/conan-Qt-Color-Widgets/)
 * ideally, test new version of package with actual projects that use it
 * switch `channel` back to `stable` and make a merge request
