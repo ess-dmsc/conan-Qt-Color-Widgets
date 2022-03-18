@@ -4,10 +4,10 @@ from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
-    version = "a95f72e"
+    version = "9f4e052"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Qt-Color-Widgets here>"
+    url = "https://github.com/ess-dmsc/Qt-Color-Widgets"
+    description = "Improved QColorDialog and several other color-related widgets."
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
@@ -15,12 +15,12 @@ class QtColorWidgetsConan(ConanFile):
 
     # The folder name when the *.tar.gz release is extracted
     folder_name = "Qt-Color-Widgets"
-    # The temporary build diirectory
+    # The temporary build directory
     build_dir = "./%s/build" % folder_name
 
     def source(self):
         self.run("git clone https://github.com/ess-dmsc/Qt-Color-Widgets.git")
-        self.run("cd Qt-Color-Widgets && git checkout a95f72e && cd ..")
+        self.run("cd Qt-Color-Widgets && git checkout {} && cd ..".format(self.version))
 
     def build(self):
         files.mkdir(self.build_dir)
@@ -49,4 +49,4 @@ class QtColorWidgetsConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["QtColorWidgets-Qt52"]
+        self.cpp_info.libs = ["QtColorWidgets"]
