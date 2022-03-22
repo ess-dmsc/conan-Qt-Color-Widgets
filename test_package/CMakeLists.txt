@@ -15,14 +15,17 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-find_package(Qt5 COMPONENTS Widgets PrintSupport REQUIRED)
+
+find_package(Qt6 COMPONENTS Widgets PrintSupport REQUIRED)
+if (NOT Qt6_FOUND)
+  find_package(Qt5 COMPONENTS Widgets PrintSupport REQUIRED)
 
 add_executable(example example.cpp)
 target_link_libraries(example
     ${CONAN_LIBS}
     QtColorWidgets
-    Qt5::Widgets
-    Qt5::PrintSupport)
+    Qt::Widgets
+    Qt::PrintSupport)
 
 # CTest is a testing tool that can be used to test your project.
 # enable_testing()
