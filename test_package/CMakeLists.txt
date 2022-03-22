@@ -19,6 +19,7 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt6 COMPONENTS Widgets PrintSupport)
 if (NOT Qt6_FOUND)
   find_package(Qt5 COMPONENTS Widgets PrintSupport REQUIRED)
+endif()
 
 add_executable(example example.cpp)
 target_link_libraries(example
