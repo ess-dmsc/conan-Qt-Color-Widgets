@@ -4,7 +4,7 @@ from conans.util import files
 
 class QtColorWidgetsConan(ConanFile):
     name = "Qt-Color-Widgets"
-    version = "fadd2dd"
+    version = "1a012b7"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
     url = "https://github.com/ess-dmsc/Qt-Color-Widgets"
     description = "Improved QColorDialog and several other color-related widgets."
