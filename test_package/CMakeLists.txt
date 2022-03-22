@@ -10,6 +10,7 @@ if(APPLE AND EXISTS /usr/local/opt/qt)
   # /usr/local/opt/qt, ensure it can be found by CMake since
   # it is not in the default /usr/local prefix.
   list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt")
+  set(INCPATH "/usr/local/opt/qt")
 endif()
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
@@ -22,7 +23,8 @@ if (NOT Qt6_FOUND)
 endif()
 
 
-message(STATUS "CMAKE_INSTALL_INCLUDEDIR=${CMAKE_INSTALL_INCLUDEDIR}")
+set(CMAKE_INSTALL_INCLUDEDIR ${INCPATH}/${CMAKE_INSTALL_INCLUDEDIR})
+#message(STATUS "CMAKE_INSTALL_INCLUDEDIR=${CMAKE_INSTALL_INCLUDEDIR}")
 
 add_executable(example example.cpp)
 target_link_libraries(example
