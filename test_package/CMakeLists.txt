@@ -11,6 +11,7 @@ if(APPLE AND EXISTS /usr/local/opt/qt)
   # it is not in the default /usr/local prefix.
   list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt")
 endif()
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -22,12 +23,12 @@ if (NOT Qt6_FOUND)
 endif()
 
 
-#add_executable(example example.cpp)
-#target_link_libraries(example
-#    ${CONAN_LIBS}
-#    QtColorWidgets
-#    Qt::Widgets
-#    Qt::PrintSupport)
+add_executable(example example.cpp)
+target_link_libraries(example
+    ${CONAN_LIBS}
+    QtColorWidgets
+    Qt::Widgets
+    Qt::PrintSupport)
 
 # CTest is a testing tool that can be used to test your project.
 # enable_testing()

@@ -37,7 +37,7 @@ class QtColorWidgetsConan(ConanFile):
                 cmake.definitions["CMAKE_SHARED_LINKER_FLAGS"] = "-headerpad_max_install_names"
 
             # cmake.configure(source_dir="..", build_dir=".")
-            #self.run("cmake --debug-output %s %s" % ("..", cmake.command_line))
+            self.run("cmake --debug-output %s %s" % ("..", cmake.command_line))
             cmake.build(build_dir=".")
             os.system("make install DESTDIR=./install")
 
