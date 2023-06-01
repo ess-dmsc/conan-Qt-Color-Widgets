@@ -1,8 +1,5 @@
+cmake_minimum_required(VERSION 3.15)
 project(PackageTest CXX)
-cmake_minimum_required(VERSION 2.8.12)
-
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(KEEP_RPATHS)
 
 #For Qt
 if(APPLE AND EXISTS /usr/local/opt/qt)
@@ -18,6 +15,15 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt5 COMPONENTS Widgets PrintSupport REQUIRED)
 
 add_executable(example example.cpp)
+
+# Add the path used by conan to install the header files
+target_include_directories(example PUBLIC
+  ${CMAKE_INCLUDE_PATH})
+
+# Add the path used by conan to install the library files
+target_link_directories(example PUBLIC
+  ${CMAKE_LIBRARY_PATH})
+
 target_link_libraries(example
     ${CONAN_LIBS}
     QtColorWidgets
