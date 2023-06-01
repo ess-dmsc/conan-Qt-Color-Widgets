@@ -1,23 +1,35 @@
-from conans import ConanFile, CMake, tools
+# from os.path import join
+
+from conan import ConanFile
+# from conan.tools.files import copy
+from conan.tools.cmake import CMake, cmake_layout
+from conan.tools.build import can_run
+
+
 import os
 
 class QtColorWidgetsTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "cmake"
+    generators = "CMakeDeps", "CMakeToolchain"
+
+    def requirements(self):
+        self.requires(self.tested_reference_str)
 
     def build(self):
         cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is in "test_package"
         cmake.configure()
         cmake.build()
 
-    def imports(self):
-        self.copy("*.dll", dst="bin", src="bin")
-        self.copy("*.dylib*", dst="bin", src="lib")
-        self.copy('*.so*', dst='bin', src='lib')
-        self.copy("*.a", dst="bin", src='lib')
+    def layout(self):
+        cmake_layout(self)
+
+    # def imports(self):
+    #     copy(self, "*.dll", self.build_folder, join(self.package_folder, "bin"), keep_path=False)
+    #     copy(self, "*.so", self.build_folder, join(self.package_folder, "lib"), keep_path=False)
+    #     copy(self, "*.dylib", self.build_folder, join(self.package_folder, "lib"), keep_path=False)
+    #     copy(self, "*.a", self.build_folder, join(self.package_folder, "lib"), keep_path=False)
 
     def test(self):
-        if not tools.cross_building(self.settings):
-            os.chdir("bin")
-            self.run(".%sexample -platform offscreen" % os.sep)
+        if can_run(self):
+            cmd = os.path.join(self.cpp.build.bindir, "example -platform offscreen")
+            self.run(cmd, env="conanrun")
