@@ -10,7 +10,7 @@ This repository tracks the recipe for generating the conan package. You should n
 
 See the DMSC [conan-configuration repository](https://github.com/ess-dmsc/conan-configuration) for how to configure your remote.
 
-:warning: This recipe now uses version 2 of conan which in not backward compatible with version 1.
+:warning: This recipe now uses version 2 of conan which is not backward compatible with version 1.
 
 In `conanfile.txt`:
 
