@@ -5,7 +5,7 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
 
 class QtColorWidgetsConan(ConanFile):
     name = "qt-color-widgets"
-    version = "9f4e052"
+    version = "f72207b"
     license = "https://github.com/ess-dmsc/Qt-Color-Widgets/blob/master/COPYING"
     url = "https://github.com/ess-dmsc/Qt-Color-Widgets"
     description = "Improved QColorDialog and several other color-related widgets."

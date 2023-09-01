@@ -15,7 +15,7 @@ See the DMSC [conan-configuration repository](https://github.com/ess-dmsc/conan-
 In `conanfile.txt`:
 
 ```
-qt-color-widgets/9f4e052@ess-dmsc/stable
+qt-color-widgets/f72202b@ess-dmsc/stable
 ```
 
 In CMake:
