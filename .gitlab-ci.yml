@@ -64,3 +64,4 @@ container_build_node:
           fi
         fi
       EOF
+  when: manual
