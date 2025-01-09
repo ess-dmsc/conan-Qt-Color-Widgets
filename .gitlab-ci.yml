@@ -40,7 +40,8 @@ container_build_node:
         setup_conan "$CONAN_RELEASE_NAME" "$CONAN_RELEASE_URL"
         
         # Configurations for Conan package creation
-        configurations=(
+        
+        declare -a configurations=(
           "settings=(\"h5cpp:build_type=Release\") options=(\"h5cpp:with_boost=True\")"
           "settings=(\"h5cpp:build_action=Debug\") options=(\"h5cpp:with_boost=True\")"
         )
