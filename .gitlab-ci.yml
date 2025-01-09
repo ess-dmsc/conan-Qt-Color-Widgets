@@ -46,7 +46,7 @@ container_build_node:
         )
 
         # Create a Conan Package for each configuration
-        for config in "${configs[@]}"; do
+        for config in "${configurations[@]}"; do
           # DEBUG
           echo "$configurations"
 
