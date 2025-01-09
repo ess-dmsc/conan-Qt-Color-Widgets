@@ -17,7 +17,7 @@ conan_package_creation() {
     local conan_options=${3:-""}
 
     echo 'Creating Conan package...'
-    conan create $conan_path ${CONAN_USER}/${CONAN_PKG_CHANNEL} --build=outdated $conan_settings $conan_options
+    conan create $conan_path ${CONAN_USER}/${CONAN_PKG_CHANNEL} --build=outdated --settings $conan_settings --options $conan_options
 }
 
 # Uploads packages to the external Conan repository

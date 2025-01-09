@@ -48,10 +48,7 @@ container_build_node:
         # Create a Conan Package for each configuration
         for config in "${configurations[@]}"; do
           eval "$config"
-          settingsArgs=$(printf -- "--settings %s " "${settings[@]}")
-          optionsArgs=$(printf -- "--options %s " "${options[@]}")
-
-          conan_package_creation "." "$settingsArgs" "$optionsArgs"
+          conan_package_creation "." "${settings[@]}" "${options[@]}"
         done
 
         # Upload conan packages
