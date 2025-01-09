@@ -37,3 +37,11 @@ If you are a contributor and wish to update this recipe to use the latest versio
 * update the conan package name in code example, under the ["Using the package"](#using-the-package) section above
 * change `channel` back to "stable" in [Jenkinsfile](Jenkinsfile)
 * make a merge request
+
+## Uploading a New Conan Package via *GitLab*
+
+* Navigate to Build → Pipelines.
+* Select the Branches tab.
+* Locate the target branch from which you want to create and upload the Conan package.
+* Click the Play button ▸ on the right side of the target branch to trigger the pipeline.
+* This will create and upload the Conan package based on the selected branch.
