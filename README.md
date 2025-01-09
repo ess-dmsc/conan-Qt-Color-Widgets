@@ -38,7 +38,7 @@ If you are a contributor and wish to update this recipe to use the latest versio
 * change `channel` back to "stable" in [Jenkinsfile](Jenkinsfile)
 * make a merge request
 
-## Uploading a New Conan Package via GitLab
+## Uploading a New Conan Package via *GitLab*
 
 * Navigate to Build → Pipelines.
 * Select the Branches tab.
