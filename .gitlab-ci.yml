@@ -32,7 +32,7 @@ container_build_node:
   script:
     - echo "Starting build job for $PROJECT_NAME on $CONTAINER"
     - |
-      $SHELL <<EOF
+      $SHELL <<'EOF'
         # Sourcing GitLab CI functions
         source .ci_functions.sh
 
@@ -40,8 +40,7 @@ container_build_node:
         setup_conan "$CONAN_RELEASE_NAME" "$CONAN_RELEASE_URL"
         
         # Configurations for Conan package creation
-        
-        declare -a configurations=(
+        configurations=(
           "settings=(\"h5cpp:build_type=Release\") options=(\"h5cpp:with_boost=True\")"
           "settings=(\"h5cpp:build_action=Debug\") options=(\"h5cpp:with_boost=True\")"
         )
@@ -51,7 +50,7 @@ container_build_node:
           # DEBUG: Display the current configuration
           echo "Raw Config: $config"
 
-           # Evaluate the settings and options in the configuration
+          # Evaluate the settings and options in the configuration
           eval "$config"
 
           # Convert the arrays into strings for the Conan command
