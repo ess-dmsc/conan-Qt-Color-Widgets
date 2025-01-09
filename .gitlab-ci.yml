@@ -28,7 +28,6 @@ container_build_node:
       - CONTAINER: "ubuntu2204"
         IMAGE: "registry.esss.lu.se/ecdc/ess-dmsc/docker-ubuntu2204-build-node:5.0.0"
         SHELL: "bash -e -x"
-
   image: $IMAGE
   script:
     - echo "Starting build job for $PROJECT_NAME on $CONTAINER"
@@ -66,3 +65,6 @@ container_build_node:
         fi
       EOF
   when: manual
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
