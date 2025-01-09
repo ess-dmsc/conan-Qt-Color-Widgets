@@ -47,15 +47,19 @@ container_build_node:
 
         # Create a Conan Package for each configuration
         for config in "${configurations[@]}"; do
-          # DEBUG
-          echo "$config"
+          # DEBUG: Display the current configuration
+          echo "Raw Config: $config"
 
-          # Convert the settings and options arrays to the required format
+           # Evaluate the settings and options in the configuration
+          eval "$config"
+
+          # Convert the arrays into strings for the Conan command
           settingsArgs=$(printf -- "--settings %s " "${settings[@]}")
           optionsArgs=$(printf -- "--options %s " "${options[@]}")
 
-          # DEBUG
-          echo "$settingsArgs" "$optionsArgs"
+          # DEBUG: Display the parsed settings and options
+          echo "Settings Args: $settingsArgs"
+          echo "Options Args: $optionsArgs"
 
           conan_package_creation "." "$settingsArgs" "$optionsArgs"
         done
