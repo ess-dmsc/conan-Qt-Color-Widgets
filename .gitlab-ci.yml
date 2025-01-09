@@ -41,39 +41,29 @@ container_build_node:
         
         # Configurations for Conan package creation
         configurations=(
-          "settings=(\"h5cpp:build_type=Release\") options=(\"h5cpp:with_boost=True\")"
-          "settings=(\"h5cpp:build_action=Debug\") options=(\"h5cpp:with_boost=True\")"
+          "settings=(\"Qt-Color-Widgets:build_type=Release\") options=(\"Qt-Color-Widgets:shared=False\")"
+          "settings=(\"Qt-Color-Widgets:build_type=Debug\") options=(\"Qt-Color-Widgets:shared=False\")"
         )
 
         # Create a Conan Package for each configuration
         for config in "${configurations[@]}"; do
-          # DEBUG: Display the current configuration
-          echo "Raw Config: $config"
-
-          # Evaluate the settings and options in the configuration
           eval "$config"
-
-          # Convert the arrays into strings for the Conan command
           settingsArgs=$(printf -- "--settings %s " "${settings[@]}")
           optionsArgs=$(printf -- "--options %s " "${options[@]}")
-
-          # DEBUG: Display the parsed settings and options
-          echo "Settings Args: $settingsArgs"
-          echo "Options Args: $optionsArgs"
 
           conan_package_creation "." "$settingsArgs" "$optionsArgs"
         done
 
         # Upload conan packages
-        if [[ "$CI_COMMIT_REF_NAME" != "master" ]]; then
-           echo "Skipping upload stage: only the master branch can upload to the stable channel"
-         else
-          # Upload to Conan packages to Conan-External
-          upload_packages_to_conan_external "."
+        # if [[ "$CI_COMMIT_REF_NAME" != "master" ]]; then
+        #    echo "Skipping upload stage: only the master branch can upload to the stable channel"
+        #  else
+        #   # Upload to Conan packages to Conan-External
+        upload_packages_to_conan_external "."
 
-          # Upload Conan packages to Conan-Release if this is ther target container
-          if [[ "$CONTAINER" == "$TARGET_CONTAINER_UPLOAD_REMOTE" ]]; then
-            upload_packages_to_conan_release "."
-          fi
-        fi
+          # # Upload Conan packages to Conan-Release if this is ther target container
+          # if [[ "$CONTAINER" == "$TARGET_CONTAINER_UPLOAD_REMOTE" ]]; then
+        upload_packages_to_conan_release "."
+        #   fi
+        # fi
       EOF
