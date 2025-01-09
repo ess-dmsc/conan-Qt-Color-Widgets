@@ -11,14 +11,6 @@ variables:
   CONAN_RELEASE_NAME: "ecdc-conan-release"
   CONAN_RELEASE_URL: "https://artifactory.esss.lu.se/artifactory/api/conan/ecdc-conan-release"
 
-  # Define shell and image configurations
-  SHELL_CENTOS7: "/usr/bin/scl enable devtoolset-11 rh-python38 -- /bin/bash -e -x"
-  SHELL_ALMA8: "/usr/bin/scl enable gcc-toolset-12 -- /bin/bash -e -x"
-  SHELL_UBUNTU: "bash -e -x"
-  IMAGE_CENTOS7: "registry.esss.lu.se/ecdc/ess-dmsc/docker-centos7-build-node:12.3.0"
-  IMAGE_ALMA8: "registry.esss.lu.se/ecdc/ess-dmsc/docker-almalinux8-build-node:1.1.0"
-  IMAGE_UBUNTU: "registry.esss.lu.se/ecdc/ess-dmsc/docker-ubuntu2204-build-node:5.0.0"
-
 # Container Build Node Stage so the Conan package can be built for all platforms
 container_build_node:
   stage: container_build_node
@@ -28,14 +20,14 @@ container_build_node:
   parallel:
     matrix:
       - CONTAINER: "centos7-gcc11"
-        IMAGE: "$IMAGE_CENTOS7"
-        SHELL: "$SHELL_CENTOS7"
+        IMAGE: "registry.esss.lu.se/ecdc/ess-dmsc/docker-centos7-build-node:12.3.0"
+        SHELL: "/usr/bin/scl enable devtoolset-11 rh-python38 -- /bin/bash -e -x"
       - CONTAINER: "almalinux8-gcc12"
-        IMAGE: "$IMAGE_ALMA8"
-        SHELL: "$SHELL_ALMA8"
+        IMAGE: "registry.esss.lu.se/ecdc/ess-dmsc/docker-almalinux8-build-node:1.1.0"
+        SHELL: "/usr/bin/scl enable gcc-toolset-12 -- /bin/bash -e -x"
       - CONTAINER: "ubuntu2204"
-        IMAGE: "$IMAGE_UBUNTU"
-        SHELL: "$SHELL_UBUNTU"
+        IMAGE: "registry.esss.lu.se/ecdc/ess-dmsc/docker-ubuntu2204-build-node:5.0.0"
+        SHELL: "bash -e -x"
   image: $IMAGE
   script:
     - echo "Starting build job for $PROJECT_NAME on $CONTAINER"
